@@ -1,6 +1,7 @@
 package com.example.admin.myapplication;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,7 @@ import static com.example.admin.myapplication.R.id.btnCupcake;
 
 public class MainActivity extends FragmentActivity {
 
+    Typeface tfc1;
     Button wedding,birthday,luxury,cupcake,sponge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends FragmentActivity {
 
     public void onSelectedFragment(View view)
     {
+
         birthday =(Button)findViewById(R.id.btnBirthday) ;
         cupcake =(Button)findViewById(btnCupcake) ;
         luxury =(Button)findViewById(R.id.btnLuxury) ;
@@ -43,8 +46,10 @@ public class MainActivity extends FragmentActivity {
         if(view == findViewById(R.id.btnBirthday))
         {
 
+
               newFragment = new BirthdayFragment();
             birthday.setBackgroundColor(Color.WHITE);
+
             birthday.setEnabled(false);
             luxury.setEnabled(true);
             sponge.setEnabled(true);
