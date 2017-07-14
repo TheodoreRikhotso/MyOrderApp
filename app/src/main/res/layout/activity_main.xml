@@ -5,52 +5,65 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@android:color/holo_blue_dark"
     tools:context="com.example.admin.myapplication.MainActivity">
-
 
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:background="#F8F8FF"
+        android:orientation="vertical">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnWedding"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="132dp"
+            android:listSelector="@drawable/selected"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@drawable/wed_icon"
             android:onClick="onSelectedFragment"
-            android:text="Button" />
+            android:text="Wedding" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnCupcake"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="132dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@drawable/icon"
             android:onClick="onSelectedFragment"
-            android:text="Button" />
+            android:text="Cupcakes" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnBirthday"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="132dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@drawable/icon_birthday"
             android:onClick="onSelectedFragment"
-            android:text="Button" />
+            android:text="Birthady" />
 
         <Button
-            android:id="@+id/fOne"
+            android:id="@+id/btnSponge"
+            android:longClickable="true"
             android:layout_width="match_parent"
-            android:layout_height="103dp"
+            android:layout_height="132dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@drawable/icon_sponge"
             android:onClick="onSelectedFragment"
-            android:text="Button" />
+            android:text="Sponge" />
 
         <Button
-            android:id="@+id/fTwo"
+
+            android:id="@+id/btnLuxury"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="132dp"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@drawable/icon_luxury"
             android:onClick="onSelectedFragment"
-            android:text="Button" />
+            android:text="Luxury" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -58,9 +71,13 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
+        android:drawableTop="@drawable/icon"
         android:orientation="vertical">
 
     </LinearLayout>
+
+
+
 
 
 </LinearLayout>

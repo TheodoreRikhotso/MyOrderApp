@@ -7,26 +7,34 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:paddingLeft="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivCake"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
+
+
             app:srcCompat="@mipmap/ic_launcher" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="70dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="5dp"
         android:layout_marginTop="7dp"
         android:orientation="vertical">
-
+        <TextView
+            android:id="@+id/tvType"
+            android:fontFamily=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="TextView" />
 
         <TextView
             android:id="@+id/tvDescription"
@@ -36,11 +44,11 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +64,7 @@
             android:id="@+id/btnRemove"
             android:layout_width="30dp"
             android:layout_height="40dp"
-
+            android:background="#F8F8FF"
 
 
             android:text="-" />
@@ -66,14 +74,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+
             android:gravity="center"
-            android:text="1" />
+            android:text="0" />
 
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="30dp"
             android:layout_height="40dp"
-
+            android:background="#F8F8FF"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"

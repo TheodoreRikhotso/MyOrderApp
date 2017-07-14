@@ -7,19 +7,23 @@ package com.example.admin.myapplication;
 public class Cake {
 
     private  int cake;
+    private  String type;
     private String description;
     private double price;
-//    private  int remove;
+
     private int Quantity;
 //    private int add;
 
 
-    public Cake(int cake, String description, double price) {
+    public String getType() {
+        return type;
+    }
+
+    public Cake(int cake, String type, String description, double price) {
         this.cake = cake;
+        this.type = type;
         this.description = description;
         this.price = price;
-        //this.remove = remove;
-
 
     }
 
