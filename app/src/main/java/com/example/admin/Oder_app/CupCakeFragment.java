@@ -1,4 +1,4 @@
-package com.example.admin.myapplication;
+package com.example.admin.Oder_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.admin.myapplication.CakeAdapter.PREFS_NAME;
+import static com.example.admin.Oder_app.CakeAdapter.PREFS_NAME;
 
 
 public class CupCakeFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.example.admin.myapplication;
+package com.example.admin.Oder_app;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 
-import static com.example.admin.myapplication.R.id.btnCupcake;
+import static com.example.admin.Oder_app.R.id.btnCupcake;
 
 public class MainActivity extends FragmentActivity {
 

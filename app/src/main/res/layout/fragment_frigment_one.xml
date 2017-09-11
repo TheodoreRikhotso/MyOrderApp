@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:id="@+id/pink"
-    tools:context="com.example.admin.myapplication.frigmentOne">
+    tools:context="com.example.admin.Oder_app.frigmentOne">
 
     <ListView
         android:id="@+id/gvList"

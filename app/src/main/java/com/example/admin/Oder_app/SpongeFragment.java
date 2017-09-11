@@ -1,4 +1,4 @@
-package com.example.admin.myapplication;
+package com.example.admin.Oder_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,28 +16,30 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.admin.myapplication.CakeAdapter.PREFS_NAME;
+import static com.example.admin.Oder_app.CakeAdapter.PREFS_NAME;
 
 
-public class LuxuryFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+
+public class SpongeFragment extends Fragment {
+    View rootView;
     private ArrayList<Cake> cakes;
     Cake cake ;
     ListView gvList;
-    Currency curr;
+    SharedPreferences prefs;
     int idName ;
     int totalItem ;
-    String information;
     String recite;//t
-    SharedPreferences prefs;
 
-    public LuxuryFragment() {
+
+
+    public SpongeFragment() {
         // Required empty public constructor
     }
-View rootView;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,43 +48,33 @@ View rootView;
         gvList =(ListView)rootView.findViewById(R.id.gvList);
         cakes =new ArrayList<>() ;
 
-        prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
-        idName = prefs.getInt("idName", 0);
-        totalItem= prefs.getInt("total", 0);
-        information = prefs.getString("info","");
+         prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        final ImageView ivAddCart =(ImageView) rootView.findViewById(R.id.ivAddCart);
 
 
-        curr= Currency.getInstance("ZAR");
 
         final TextView tvTotPrice = (TextView)rootView.findViewById(R.id.tvTotPrice);
         final TextView tvView = (TextView)rootView.findViewById(R.id.tvView);
         final TextView tvTotQuantity = (TextView)rootView.findViewById(R.id.tvTotQuantity);
-        final ImageView ivAddCart =(ImageView) rootView.findViewById(R.id.ivAddCart);
+
+         idName = prefs.getInt("idName", 0);
+         totalItem= prefs.getInt("total", 0);
 
 
-        cake = new Cake(R.drawable.b,"Funnel cake","3g",200);
+        cake = new Cake(R.drawable.sponge_one,"Pandan cake","3g",200);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birthday,"Cheesecake","1kg",150);
+        cake = new Cake(R.drawable.sponge_two,"Victoria sponge cake","1kg",150);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birth__one,"Cheesecake","500g",120);
+        cake = new Cake(R.drawable.sponge_three,"Sea sponge cake","500g",120);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birth__two,"Cheesecake","250g",130);
+        cake = new Cake(R.drawable.sponge_four,"Pain au chocolat","250g",130);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birth__three,"Cheesecake","500g",150);
+        cake = new Cake(R.drawable.sponge_five,"Charlotte ","500g",150);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birth_one,"Cheesecake","3g",200);
+            cake = new Cake(R.drawable.sponge_sixe,"Plain","3g",200);
         cakes.add(cake);
-        cake = new Cake(R.drawable.birth_three,"Cheesecake","1kg",150);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.birth_four,"Cheesecake","500g",120);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.birth_six,"Cheesecake","250g",130);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.birth_seven,"Cheesecake","500g",150);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.birth_seven,"Cheesecake","500g",150);
-        cakes.add(cake);
+        final String information = prefs.getString("info","");
+
 
         //  String restoredText = prefs.getString("text", null);
         tvTotPrice.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +82,7 @@ View rootView;
             public void onClick(View view) {
                 NumberFormat format = NumberFormat.getCurrencyInstance();
                 SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                int idName = prefs.getInt("idName", 0); //0 is the default value.
-                int totalItem =prefs.getInt("total", 0);
+
                 tvTotPrice.setText("Total cost"+ format.format(idName));
                 tvTotQuantity.setText(totalItem+" Items");
             }
@@ -100,9 +91,8 @@ View rootView;
             @Override
             public void onClick(View view) {
                 NumberFormat format = NumberFormat.getCurrencyInstance();
-                SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                int idName = prefs.getInt("idName", 0); //0 is the default value.
-                int totalItem =prefs.getInt("total", 0);
+
+
                 tvTotPrice.setText("Total cost"+ format.format(idName));
                 if(totalItem==1) {
                     tvTotQuantity.setText(totalItem + " Item");
@@ -111,10 +101,9 @@ View rootView;
                 }
             }
         });
-
         NumberFormat format = NumberFormat.getCurrencyInstance();
 
-        recite = "Order info \n******************************\n"+information+"Total Cost \n \n"+ format.format(idName);
+        recite = "Order info \n******************************\n"+information+"\n\n\nTotal Cost "+ format.format(idName);
         ivAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,6 +154,7 @@ View rootView;
         });
 
 
+
         tvTotPrice.setText(""+CakeAdapter.total);
         CakeAdapter adapter = new CakeAdapter(this.getContext(),cakes);
 
@@ -173,9 +163,7 @@ View rootView;
 
 
         return rootView;
-
     }
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.admin.myapplication;
+package com.example.admin.Oder_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,100 +18,95 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.admin.myapplication.CakeAdapter.PREFS_NAME;
+import static com.example.admin.Oder_app.CakeAdapter.PREFS_NAME;
 
 
-public class WeddingFragments extends Fragment {
-public static int to=0;
-
-    String email;
+public class BirthdayFragment extends Fragment {
     private ArrayList<Cake> cakes;
     Cake cake ;
     ListView gvList;
-    String recite;
+    int idName ;
+    int totalItem ;
+    String information;
+    String recite;//t
     SharedPreferences prefs;
-    int totalItem;
-    int idName;
-    public WeddingFragments() {
+
+    public BirthdayFragment() {
         // Required empty public constructor
     }
-
 
     View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        rootView= inflater.inflate(R.layout.fragment_cupcake_fragment, container, false);
         // Inflate the layout for this fragment
-
-         rootView= inflater.inflate(R.layout.fragment_cupcake_fragment, container, false);
-         gvList =(ListView)rootView.findViewById(R.id.gvList);
+        gvList =(ListView)rootView.findViewById(R.id.gvList);
         cakes =new ArrayList<>() ;
-
+        prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         final TextView tvTotPrice = (TextView)rootView.findViewById(R.id.tvTotPrice);
         final TextView tvView = (TextView)rootView.findViewById(R.id.tvView);
         final TextView tvTotQuantity = (TextView)rootView.findViewById(R.id.tvTotQuantity);
         final ImageView ivAddCart =(ImageView) rootView.findViewById(R.id.ivAddCart);
 
+        idName = prefs.getInt("idName", 0);
+        totalItem= prefs.getInt("total", 0);
+        information = prefs.getString("info","");
+
+        cake = new Cake(R.drawable.b,"Funnel cake","3g",200);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birthday,"Strawberry","1kg",150);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth__one,"Hummingbird cake","500g",120);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth__two,"Prinzregententorte","250g",130);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth__three,"Dobos Torte","500g",150);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_one,"Yoping","3g",200);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_three,"Sachertorte","1kg",150);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_four,"Bakewell","500g",120);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_six,"Marble cake","250g",130);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_seven,"Strawberry","500g",150);
+        cakes.add(cake);
+        cake = new Cake(R.drawable.birth_seven,"Johannisbeerkuchen","500g",150);
+        cakes.add(cake);
 
 
-         cake = new Cake(R.drawable.wed_elevn,"Boston cream pie","3g",200);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed___two,"White Cake","1kg",150);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_two,"Pineapple","500g",120);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_three,"Layer Cake","250g",130);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_one,"Funfetti","500g",150);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_six,"Gingerbread Cake","3g",200);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_seven,"Chocolate Chip Cake","1kg",150);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_eight,"Beignet","500g",120);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_ten,"Peanut Butter","250g",130);
-        cakes.add(cake);
-        cake = new Cake(R.drawable.wed_one,"Tres leches","500g",150);
-        cakes.add(cake);
 
-        NumberFormat format = NumberFormat.getCurrencyInstance();
-        prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        idName = prefs.getInt("idName", 0); //0 is the default value.
-        totalItem =prefs.getInt("total", 0);
-
-
-      //  String restoredText = prefs.getString("text", null);
+        //  String restoredText = prefs.getString("text", null);
         tvTotPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NumberFormat format = NumberFormat.getCurrencyInstance();
-
-
+                SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                int idName = prefs.getInt("idName", 0); //0 is the default value.
+                int totalItem =prefs.getInt("total", 0);
                 tvTotPrice.setText("Total cost"+ format.format(idName));
                 tvTotQuantity.setText(totalItem+" Items");
             }
         });
-       final String information = prefs.getString("info","");
-
-
         tvView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NumberFormat format = NumberFormat.getCurrencyInstance();
                 SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
+                int idName = prefs.getInt("idName", 0); //0 is the default value.
+                int totalItem =prefs.getInt("total", 0);
                 tvTotPrice.setText("Total cost"+ format.format(idName));
                 if(totalItem==1) {
                     tvTotQuantity.setText(totalItem + " Item");
                 }else {
                     tvTotQuantity.setText(totalItem + " Items");
                 }
-
             }
         });
-
+        NumberFormat format = NumberFormat.getCurrencyInstance();
 
         recite = "Order info \n******************************\n"+information+"Total Cost \n \n"+ format.format(idName);
         ivAddCart.setOnClickListener(new View.OnClickListener() {
@@ -134,23 +129,23 @@ public static int to=0;
 
 
 //
-                                        Intent i = new Intent(Intent.ACTION_SEND);
-                                        i.setType("message/rfc822");
-                                        i.putExtra(Intent.EXTRA_EMAIL  ,new String[]{"recipient@example.com"} );
-                                        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-                                        i.putExtra(Intent.EXTRA_TEXT   , recite);
+                                Intent i = new Intent(Intent.ACTION_SEND);
+                                i.setType("message/rfc822");
+                                i.putExtra(Intent.EXTRA_EMAIL  ,new String[]{"recipient@example.com"} );
+                                i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                                i.putExtra(Intent.EXTRA_TEXT   , recite);
 
 
-                                    try {
-                                        startActivity(Intent.createChooser(i, "Send mail..."));
-                                    } catch (android.content.ActivityNotFoundException ex) {
-                                        Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                                    }
+                                try {
+                                    startActivity(Intent.createChooser(i, "Send mail..."));
+                                } catch (android.content.ActivityNotFoundException ex) {
+                                    Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                                }
 
 //
-                                }
                             }
-                        );
+                        }
+                );
 
                 alertDialog.setNegativeButton("NO",
                         new DialogInterface.OnClickListener() {
@@ -163,10 +158,7 @@ public static int to=0;
             }
         });
 
-
-
-
-        //
+        tvTotPrice.setText(""+CakeAdapter.total);
         CakeAdapter adapter = new CakeAdapter(this.getContext(),cakes);
 
 
@@ -174,6 +166,7 @@ public static int to=0;
 
 
         return rootView;
+
     }
 
 

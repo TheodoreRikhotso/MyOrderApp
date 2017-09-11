@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:id="@+id/pink"
-    tools:context="com.example.admin.myapplication.CupCakeFragment">
+    tools:context="com.example.admin.Oder_app.CupCakeFragment">
 
 
     <ListView
